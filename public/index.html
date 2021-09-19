@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="test">test saja</button>
+    <script>
+        let socket = io.connect(window.location.origin);
+
+        socket.on('getPlayers', data => {
+            console.log(data);
+        })
+
+        document.getElementById("test").addEventListener('click', (event) => {
+            socket.emit('joinGame', { id: Math.floor(Math.random() * 100), position: 33 });
+        })
+    </script>
+</body>
+
+</html>
